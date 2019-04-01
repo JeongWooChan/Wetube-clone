@@ -48,6 +48,32 @@
 
 <br>
 
+## 4. router
+
+> router란 route들의 복잡함을 쪼개주는데 사용할 수 있다. 
+> ```js
+> // router.js
+> import express from "express"; 
+>
+> export const userRouter = express.Router(); 
+>
+> userRouter.get("/", (req,res) => res.send('user index'));
+> userRouter.get("/edit", (req,res) => res.send('user edit'));
+> userRouter.get("/password", (req,res) => res.send('user password'));
+> ```
+
+> ```js
+> // app.js 
+> import { userRouter } from "./router";
+> ... 
+> app.use("/user", userRouter);
+> ``` 
+> 위의 코드는 /user 경로에 접속하였을 때의 router 사용법을 나타낸 것이며, 사용자가 localhost:3000/user 로 접속 할 경우에는 'user index'라는 문구가 나타날 것이며,<br>
+localhost:3000/user/edit 으로 접속할 경우에는 'user edit'이라는 문구가 나타나게 될것이다. 
+> 이와같이 모든 것을 엄청 작은 파일들로 쪼개서 사용할 수 있게 해주는 것이 router의 역할이다. 
+
+<br>
+
 ## 0. Express 강의를 들으며 알게 된 것 (TIP) 
 
 ### 0-1. npm start로 index.js 실행 
@@ -58,3 +84,13 @@
 #### 0-1-1. nodemon, babel 적용
 > nodemon과 babel 설치 후 ```"scripts": {"start" : "nodemon --exec babel-node index.js --delay 2"}``` 로 수정해준다.<br> 
 > 마지막에 delay 2를 넣어주는 이유로는 babel이 변환을 완료할 때까지의 시간을 주기 위해서이다. delay가 없으면 nodemon이 실행됐을때, babel이 변환이 완료됐을 때 총 2번의 서버 재시작이 이뤄지게 된다. 
+
+### 0-2. export 한 것 import 할 때 (#2-8)
+
+#### 0-2-1. default 
+
+> ```export default app```과 같이 default로 export하여 내보낸 것을 import 할때에는 ```import app from "./app"``` 과 같은 형식으로 import해온다. 
+> 
+#### 0-2-2. not default 
+
+> ```export const userRouter = express.Router(); ``` 와 같이 default 없이 export를 했을 때에는 ```import { userRouter } from "./router";```와 같이 { }를 붙여서 import해와야 한다. 
