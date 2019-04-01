@@ -21,6 +21,24 @@ npm init
 npm install express --save 
 ```
 
+<br>
+
+## 3. Babel 설치 
+
+```bash
+npm install @babel/node
+npm install @babel/preset-env
+npm install @babel/core
+```
+
+<br>
+
+## 4. nodemon 설치 
+
+```bash
+npm install nodemon -D
+```
+-D를 붙인 것은 해당 프로젝트가 필요한 것이 아니라 개발자가 필요로 한 것을 의미함 
 
 
 
