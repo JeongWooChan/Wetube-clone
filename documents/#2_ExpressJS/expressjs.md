@@ -20,3 +20,12 @@
 > 1. 유명함 
 > 2. 매우 안정적 → 새로운 버전이 많이 안나왔다! 
 > 3. 간단하게 서버를 구축할 수 있다. 
+
+<br>
+
+## 3. Express 강의를 들으며 알게 된 것 
+
+### 3-1. npm start로 index.js 실행 
+
+> node를 실행하기 위해서는 항상 터미널에 ```node index.js```를 입력해서 실행했어야 하는데, <b>package.json</b> 파일에 
+> ```"scripts": {"start" : "node index.js"}``` 를 추가하면 ```npm start``` 명령어로만 노드를 실행시킬 수 있다. 
