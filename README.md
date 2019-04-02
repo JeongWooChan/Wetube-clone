@@ -80,8 +80,8 @@ npm install pug
 ## Pages : 
 
 - [ ] Home
-- [ ] Join
-- [ ] Login
+- [x] Join
+- [x] Login
 - [x] Search
 - [ ] UserDetail 
 - [ ] Edit Profile 
