@@ -115,3 +115,30 @@ localhost:3000/user/edit 으로 접속할 경우에는 'user edit'이라는 문�
 #### 0-2-2. not default 
 
 > ```export const userRouter = express.Router(); ``` 와 같이 default 없이 export를 했을 때에는 ```import { userRouter } from "./router";```와 같이 { }를 붙여서 import해와야 한다. 
+
+### 0-3. mixin (#2-22)
+
+> mixin은 웹사이트에서 자주 반복되는 html코드를 담고 있는 곳이다.<br>
+> mixin은 pug의 함수의 일종이다. 
+> <br> 먼저 mixin 타입으로 변수명을 지정해준 후 인자로 객체를 받아와 실행시키는 방식이다. 아래 코드에서는 초기값으로 video라는 빈 객체를 인자로 받았다. 
+> ```js 
+> // views/mixins/videoBlock.pug
+> mixin videoBlock(video = {})
+>    h1=video.title
+>    p=video.description
+> ```
+> 이렇게 mixins코드를 작성하면 사용할 곳에서 +mixin변수명 으로 객체를 전달해 줄 수 있다. 사용하기 전에 include를 시켜줘야함 
+> ```js 
+> // views/home.pug 
+> ...
+> include mixins/videoBlock 
+>
+> block content
+>     .videos
+>         each item in videos
+>             +videoBlock({
+>                 title:item.title,
+>                 description:item.description 
+>             })
+> ``` 
+> 각각 다른 정보를 가지지만 같은 구조를 가지는 데이터를 표시하기 위한 코드를 <b>캡슐화</b> 했다. 이게 mixin을 사용하는 이유이다.
