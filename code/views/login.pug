@@ -1,9 +1,9 @@
-doctype html    
-html
-    head
-        title WeTube
-    body
-        main
-            p Login
-        footer
-            span &copy; WeTube
+extends layouts/main
+
+block content
+    .form__container 
+        form(action="/login", method="post")
+            input(type="email", name="email", placeholder="Email")
+            input(type="password", name="password", placeholder="password")
+            input(type="submit", value="Log In")
+        include partials/socialLogin
