@@ -74,5 +74,24 @@ cookie에 유저 정보를 저장하기 위해 필요한 미들웨어
 npm install pug
 ```
 
+<br>
+<hr>
+
+## Pages : 
+
+- [ ] Home
+- [ ] Join
+- [ ] Login
+- [x] Search
+- [ ] UserDetail 
+- [ ] Edit Profile 
+- [ ] Change Password 
+- [ ] Upload 
+- [ ] Video Detail 
+- [ ] Edit Video 
+
+
+
+
 
 [공식홈페이지]:https://nodejs.org/ko/
