@@ -74,6 +74,26 @@ localhost:3000/user/edit 으로 접속할 경우에는 'user edit'이라는 문�
 
 <br>
 
+## 5. PUG  
+
+> Pug는 view engine이다. 
+> <br> Pug를 현재 프로젝트에 적용시키기 위해서는 ```set()```함수를 통해 application의 설정을 해줘야 한다. 실제 적용은 아래와 같이 하면 된다. 
+> ``` js 
+> // app.js
+> app.set('view engine', "pug");
+> ```
+> Pug와 express에는 view파일들의 위치에 관한 기본 설정이 있다. 만약 그 설정을 바꾸고 싶다면 'views' 설정을 바꿔야 한다. <br>
+> html 파일을 저장해야 하는 폴더의 기본 값은 프로젝트의 작업 디렉토리 + 'views' 이다. 
+> <br> 현재 프로직트에 views라는 새로운 폴더를 만든 후 그안에 pug파일을 만들어준다. 그 이후 pug파일을 띄우는 방법 (render) 은 다음과 같다. 
+> ```js
+> // controllers/videoController.js
+> export const home = (req, res) => res.render("home");
+> ```
+> res.render("파일 이름"); 으로 render 할 수 있다. <br>
+> 
+
+<br>
+
 ## 0. Express 강의를 들으며 알게 된 것 (TIP) 
 
 ### 0-1. npm start로 index.js 실행 
@@ -90,7 +110,8 @@ localhost:3000/user/edit 으로 접속할 경우에는 'user edit'이라는 문�
 #### 0-2-1. default 
 
 > ```export default app```과 같이 default로 export하여 내보낸 것을 import 할때에는 ```import app from "./app"``` 과 같은 형식으로 import해온다. 
-> 
+> <br> default로 export 하는 것은 파일로써 전체를 export 한다는 것이다.  
+
 #### 0-2-2. not default 
 
 > ```export const userRouter = express.Router(); ``` 와 같이 default 없이 export를 했을 때에는 ```import { userRouter } from "./router";```와 같이 { }를 붙여서 import해와야 한다. 
