@@ -67,5 +67,12 @@ npm install cookie-parser
 ```
 cookie에 유저 정보를 저장하기 위해 필요한 미들웨어 
 
+<br>
+
+## 6. 템플릿엔진 설치 (PUG)
+```bash
+npm install pug
+```
+
 
 [공식홈페이지]:https://nodejs.org/ko/
