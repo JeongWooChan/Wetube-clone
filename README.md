@@ -65,7 +65,13 @@ body로부터 정보를 얻을 수 있게 해주는 미들웨어
 ```bash
 npm install cookie-parser 
 ```
-cookie에 유저 정보를 저장하기 위해 필요한 미들웨어 
+cookie에 유저 정보를 저장하기 위해 필요한 미들웨어
+
+### 5-5. multer 
+```bash
+npm install multer
+```
+file을 upload하고 URL을 반환하는 미들웨어 
 
 <br>
 
