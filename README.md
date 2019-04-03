@@ -75,6 +75,42 @@ npm install pug
 ```
 
 <br>
+
+## 7. MongoDB 설치 
+
+> MongoDB 공식홈페이지의 [ Download Center]에서 MongoDB Community Server 다운로드 
+
+### 7-1. 설치 확인 
+```bash
+mongod 
+```
+만약 mongod 가 실행되지 않는다면 다음과 같이 환경변수 추가 
+
+> 1. [내컴퓨터] 우클릭 → 속성 → 고급 시스템 설정 → 환경변수 클릭 
+> 2. 시스템 변수 리스트 중 'Path' 선택후 편집 클릭 
+> 3. 'Mongodb'설치경로\bin 추가 
+> 4. vscode 재실행 후 터미널에 'mongod' 입력 
+
+### 7-2. 위와같은 방법으로도 mongod 실행이 안될 때 
+
+> 1. mongod를 실행시킬 디렉토리에 data 폴더를 만든다 
+> <br>   → mkdir data 
+> 2. data폴더로 이동 
+> <br>   → cd data 
+> 3. ```mongod -dbpath .``` 입력 
+
+### 7-3. mongodb 실행 
+
+> mongod를 실행 시킨 후 다른 터미널에서 ```mongo```명령을 사용하여 시작할 수 있다. 
+
+### 7-4. mongoose 설치 
+
+```bash
+npm install mongoose
+```
+NodeJS에서 MongoDB를 사용하기 위한 MongoDB Object 이다. 
+
+<br>
 <hr>
 
 ## Pages : 
@@ -95,3 +131,4 @@ npm install pug
 
 
 [공식홈페이지]:https://nodejs.org/ko/
+[ Download Center]:https://www.mongodb.com/download-center/community
