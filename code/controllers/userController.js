@@ -6,7 +6,7 @@ export const postJoin = (req, res) => {
         body: {name, email, password, password2}
     } = req;
 
-    if(password != password2) {
+    if(password !== password2) {
         res.status(400); // 잘못된 요청임을 웹사이트가 알아들을 수 있는 status 코드 값으로 전달 
         res.render("join", { pageTitle: "Join"});    
     } else {

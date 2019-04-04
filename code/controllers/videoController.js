@@ -3,7 +3,8 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({_id:-1}); 
+        // id를 -1로 준다는 것은 위 아래 순서를 바꾸겠다는 약속 같은 것이다. 
         res.render("home", { pageTitle: "Home", videos });
     } catch (error) {
         console.log(error);
