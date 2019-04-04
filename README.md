@@ -117,6 +117,15 @@ npm install mongoose
 NodeJS에서 MongoDB를 사용하기 위한 MongoDB Object 이다. 
 
 <br>
+
+## 8. Webpack 설치 
+
+```bash
+npm install webpack webpack-cli  
+```
+webpack : 파일에서 webpack을 사용하기 위함 <br>
+webpack-cli : 터미널에서 webpack을 쓸 수 있게 해주는 것 
+
 <hr>
 
 ## Pages : 
