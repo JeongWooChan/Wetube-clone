@@ -2,24 +2,24 @@ import passport from "passport";
 import routes from "../routes";
 import User from "../models/User";
 
-export const getJoin = (req, res) => res.render("join", { pageTitle: "Join"}); 
+export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res, next) => {
     const {
-        body: {name, email, password, password2}
+        body: { name, email, password, password2 }
     } = req;
 
-    if(password !== password2) {
+    if (password !== password2) {
         res.status(400); // 잘못된 요청임을 웹사이트가 알아들을 수 있는 status 코드 값으로 전달 
-        res.render("join", { pageTitle: "Join"});    
+        res.render("join", { pageTitle: "Join" });
     } else {
         try {
             const user = await User({
-                name, 
+                name,
                 email
-            }); 
-            await User.register(user, password); 
+            });
+            await User.register(user, password);
             next();
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             res.redirect(routes.home);
         }
@@ -27,17 +27,45 @@ export const postJoin = async (req, res, next) => {
     }
 };
 
-export const getLogin = (req, res) => res.render("login", { pageTitle: "Log In"}); 
+export const getLogin = (req, res) => res.render("login", { pageTitle: "Log In" });
 export const postLogin = passport.authenticate('local', {
-    failureRedirect: routes.login, 
+    failureRedirect: routes.login,
     successRedirect: routes.home
 });
 
+export const githubLogin = passport.authenticate("github");
+
+export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
+    const { _json: { id, avatar_url, name, email } } = profile;
+    try {
+        const user = await User.findOne({ email });
+        if (user) {
+            user.githubId = id;
+            user.save();
+            return cb(null, user);
+        }
+        const newUser = await User.create({
+            email,
+            name,
+            githubId: id,
+            avatarUrl: avatar_url
+        });
+        return cb(null, newUser);
+
+    } catch (err) {
+        return cb(err);
+    }
+};
+
+export const postGithubLogin = (req, res) => {
+    res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
-    // To Do: Process Logout
+    req.logout();
     res.redirect(routes.home);
 }
-export const users = (req, res) => res.render("users", { pageTitle: "Search"});
-export const userDetail = (req, res) => res.render("userDetail", { pageTitle: "User Detail"});
-export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile"});
-export const changePassword = (req, res) => res.render("changePassword", { pageTitle: "Change Password"});
+export const users = (req, res) => res.render("users", { pageTitle: "Search" });
+export const userDetail = (req, res) => res.render("userDetail", { pageTitle: "User Detail" });
+export const editProfile = (req, res) => res.render("editProfile", { pageTitle: "Edit Profile" });
+export const changePassword = (req, res) => res.render("changePassword", { pageTitle: "Change Password" });
