@@ -126,6 +126,15 @@ npm install webpack webpack-cli
 webpack : 파일에서 webpack을 사용하기 위함 <br>
 webpack-cli : 터미널에서 webpack을 쓸 수 있게 해주는 것 
 
+<br>
+
+## 9. Authentication 
+
+```bash
+npm install passport-local-mongoose 
+npm install passport passport-local
+```
+
 <hr>
 
 ## Pages : 
