@@ -25,13 +25,5 @@ passport.use(
     }, facebookLoginCallback)
 );
 
-passport.serializeUser(
-    // eslint-disable-next-line func-names
-    function (user, done) {
-        done(null, user);
-    });
-
-// eslint-disable-next-line func-names
-passport.deserializeUser(function (user, done) {
-    done(null, user);
-});
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
