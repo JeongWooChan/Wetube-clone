@@ -139,24 +139,6 @@ npm install passport passport-local
 npm install express-session
 ```
 
-<hr>
-
-## Pages : 
-
-- [ ] Home
-- [x] Join
-- [x] Login
-- [x] Search
-- [ ] UserDetail 
-- [ ] Edit Profile 
-- [ ] Change Password 
-- [ ] Upload 
-- [ ] Video Detail 
-- [ ] Edit Video 
-
-
-
-
 
 [공식홈페이지]:https://nodejs.org/ko/
 [ Download Center]:https://www.mongodb.com/download-center/community
