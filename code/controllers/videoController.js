@@ -1,5 +1,6 @@
 import routes from "../routes";
 import Video from "../models/Video";
+import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
     try {
@@ -51,7 +52,7 @@ export const videoDetail = async (req, res) => {
     } = req;
     // req.params.id
     try {
-        const video = await Video.findById(id).populate('creator');
+        const video = await Video.findById(id).populate('creator').populate('comments');
         res.render("videoDetail", { pageTitle : video.title, video});
     } catch(err) {
         console.log(err);
@@ -115,6 +116,27 @@ export const registerView = async (req, res) => {
         res.status(400); 
         res.end(); 
     } finally { 
+        res.end(); 
+    }
+}
+
+export const postAddComment = async (req, res) => {
+    const {
+        params : {id}, 
+        body : { comment },
+        user
+    } = req; 
+    try {
+        const video = await Video.findById(id);
+        const newComment = await Comment.create({
+            text: comment, 
+            creator: user.id
+        }); 
+        video.comments.push(newComment.id); 
+        video.save(); 
+    } catch (error) {
+        res.status(400);
+    } finally {
         res.end(); 
     }
 }
