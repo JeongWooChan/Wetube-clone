@@ -11,6 +11,7 @@
     "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.2",
     "autoprefixer": "^9.5.0",
+    "axios": "^0.18.0",
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.3",
@@ -39,7 +40,7 @@
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore '.scss' --ignore 'static' ",
     "dev:assets": "webpack --mode development -w",
-    "build:assets": "webpack --mode production", 
+    "build:assets": "webpack --mode production",
     "ngrok": "ngrok http 4000"
   },
   "devDependencies": {
