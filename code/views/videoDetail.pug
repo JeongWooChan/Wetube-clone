@@ -34,3 +34,5 @@ block content
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
+                        if comment.creator._id == loggedUser.id 
+                            button(id=comment.id) ❌

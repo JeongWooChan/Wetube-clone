@@ -48,6 +48,7 @@
     .video__comments-list {
       margin-top: 50px;
       li {
+        position: relative;
         background-color: #3498db;
         color: white;
         padding: 15px;
@@ -55,6 +56,13 @@
         border-bottom-left-radius: 0px;
         &:not(:last-child) {
           margin-bottom: 15px;
+        }
+        button { 
+          width: auto;
+          position: absolute;
+          right: 6px; 
+          top: 3.5px;
+          background-color: transparent;
         }
       }
     }

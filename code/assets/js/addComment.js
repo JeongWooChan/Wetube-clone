@@ -11,8 +11,11 @@ const increaseNumber = () => {
 const addComment = (comment) => {
     const li = document.createElement("li"); 
     const span = document.createElement("span"); 
+    const button = document.createElement("button");
     span.innerHTML = comment; 
+    button.innerHTML = '❌'; 
     li.appendChild(span); 
+    li.appendChild(button);
     commentList.prepend(li); 
     increaseNumber();
 }
