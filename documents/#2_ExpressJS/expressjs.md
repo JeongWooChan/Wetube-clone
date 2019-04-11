@@ -94,6 +94,46 @@ localhost:3000/user/edit 으로 접속할 경우에는 'user edit'이라는 문�
 
 <br>
 
+## 6. babel 
+
+> babel은 자바스크립트 컴파일러이다. 최신 자바스크립트 문법은 브라우저가 이해하지 못하기 때문에 babel이 브라우저가 이해할 수 있는 문법으로 변환해준다. <br>
+> ES6, ES7 등의 최신 문법을 사용해서 코딩을 할 수 있기 때문에 생산성이 향상된다.(?) 
+> <br>  즉 babel은 최신버전으로 작성된 코드를 이전 버전 문법으로 변환해주는 트랜스파일러이다.
+
+### 6-1. babel 설치 (NodeJS에서)
+```bash
+npm install @babel/node
+npm install @babel/preset-env
+npm install @babel/core
+```
+
+### 6-2. babel 적용 
+
+> 1. ```.babelrc``` 파일 생성 
+> 2. 다음과 같이 작성 
+> ```js 
+> {
+>   "presets": ["@babel/preset-env"]
+> }
+> ```
+
+### 6-3. 실행법 
+
+> package-json 파일의 scripts의 start를 다음과 같이 수정 
+> ```js
+> "scripts": {
+>   "start": "babel-node index.js"
+> }
+> ```
+
+```js
+import express from ("express"); 
+```
+> 해당 코드는 babel 없이는 브라우저가 이해하지 못해 사용할 수 없다. <br>
+> ```const express = require("express")``` 로만 사용할 수 있음
+
+<br> 
+
 ## 0. Express 강의를 들으며 알게 된 것 (TIP) 
 
 ### 0-1. npm start로 index.js 실행 
