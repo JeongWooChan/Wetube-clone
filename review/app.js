@@ -8,6 +8,8 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter"; 
 import videoRouter from "./routers/videoRouter"; 
 import { localsMiddleware } from "./middlewares";
+import passport from "passport"; 
+import "./passport";
 
 const app = express(); 
 
@@ -20,6 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use("/uploads", express.static("uploads")); 
 app.use("/static", express.static("static"));
+app.use(passport.initialize()); 
+app.use(passport.session());
 
 app.use(localsMiddleware); 
 app.use(routes.home, globalRouter); 
