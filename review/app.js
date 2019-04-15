@@ -9,6 +9,7 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter"; 
 import { localsMiddleware } from "./middlewares";
 import passport from "passport"; 
+import session from "express-session"; 
 import "./passport";
 
 const app = express(); 
@@ -22,6 +23,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use("/uploads", express.static("uploads")); 
 app.use("/static", express.static("static"));
+app.use(
+    session({
+        secret: process.env.COOKIE_SECRET,
+        resave: true, 
+        saveUninitialized: false
+    })
+);
 app.use(passport.initialize()); 
 app.use(passport.session());
 
