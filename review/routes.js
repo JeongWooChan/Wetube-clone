@@ -10,6 +10,7 @@ const USERS = "/users";
 const USER_DETAIL = "/:id"; 
 const EDIT_PROFILE = "/editProfile"; 
 const CHANGE_PASSWORD = "/changePassword"; 
+const ME = "/me"; 
 
 // Videos 
 const VIDEOS = "/videos"; 
@@ -56,7 +57,8 @@ const routes = {
         } else {
             return DELETE_VIDEO;
         }
-    } 
+    }, 
+    me: ME 
 }; 
 
 export default routes;

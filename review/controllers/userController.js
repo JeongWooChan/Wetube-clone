@@ -40,8 +40,14 @@ export const postLogin = passport.authenticate('local', {
 
 
 export const logout = (req, res) => {
+    req.logout();
     res.redirect(routes.home);
 }
+
+export const getMe = (req, res) => {
+    res.render("userDetail", { pageTitle : "User Detail", user: req.user });
+}
+
 export const userDetail = (req, res) => {
     res.render("userDetail", { pageTitle : "User Detail" });
 }
