@@ -19,6 +19,10 @@ const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit"; 
 const DELETE_VIDEO = "/:id/delete"; 
 
+// API 
+const API = "/api"; 
+const REGISTER_VIEW = "/:id/view";
+
 const routes = {
     home: HOME,
     join: JOIN,
@@ -58,7 +62,9 @@ const routes = {
             return DELETE_VIDEO;
         }
     }, 
-    me: ME 
+    me: ME, 
+    api: API, 
+    register_view: REGISTER_VIEW
 }; 
 
 export default routes;
