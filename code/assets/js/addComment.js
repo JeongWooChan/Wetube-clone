@@ -8,19 +8,20 @@ const increaseNumber = () => {
     commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1; 
 }
 
-const addComment = (comment) => {
+const addComment = (comment, commentId) => {
     const li = document.createElement("li"); 
     const span = document.createElement("span"); 
     const button = document.createElement("button");
+    button.innerText = "❌"; 
+    button.id = commentId;
     span.innerHTML = comment; 
-    button.innerHTML = '❌'; 
-    li.appendChild(span); 
+    li.appendChild(span);
     li.appendChild(button);
     commentList.prepend(li); 
-    increaseNumber();
+    increaseNumber(); 
 }
 
-const sendComment = async (comment) => {
+const sendComment = async comment => {
     const videoId = window.location.href.split("/videos/")[1];
     const response = await axios({
         url: `/api/${videoId}/comment`,
@@ -30,7 +31,7 @@ const sendComment = async (comment) => {
         }
     }); 
     if(response.status === 200) {
-        addComment(comment);
+        addComment(comment, response.data); 
     }
 }
 

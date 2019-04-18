@@ -65,7 +65,7 @@ export const getEditVideo = async (req, res) => {
     } = req; 
     try {
         const video = await Video.findById(id);
-        if(video.creator !== req.user.id) {
+        if(video.creator.toString() !== req.user.id) {
             throw Error(); 
         } else {
             res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
@@ -92,7 +92,7 @@ export const deleteVideo = async (req, res) => {
     } = req; 
     try {
         const video = await Video.findById(id);
-        if(video.creator !== req.user.id) {
+        if(video.creator.toString() !== req.user.id) {
             throw Error(); 
         } else {
             await Video.findOneAndRemove({ _id: id }); 
@@ -121,25 +121,25 @@ export const registerView = async (req, res) => {
 }
 
 export const postAddComment = async (req, res) => {
-    const {
-        params : {id}, 
-        body : { comment },
-        user
+    const { 
+      params: { id },
+      body: { comment },
+      user
     } = req; 
     try {
-        const video = await Video.findById(id);
-        const newComment = await Comment.create({
-            text: comment, 
-            creator: user.id
-        }); 
-        video.comments.push(newComment.id); 
-        video.save(); 
-    } catch (error) {
-        res.status(400);
-    } finally {
-        res.end(); 
-    }
-}
+      const video = await Video.findById(id); 
+      const newComment = await Comment.create({
+        text: comment, 
+        creator: user.id
+      });
+      video.comments.push(newComment.id); 
+      video.save(); 
+      res.end(newComment.id);
+    } catch (err) {
+      res.status(400);
+      res.end();
+    } 
+  }
 
 export const postDeleteComment = async (req, res) => {
     const {
